@@ -75,7 +75,7 @@ const store = new Vuex.Store({
     async postNewBlog ({commit}, payload) {
       const currentPosts = await blogPostsRef.get()
       let posts = currentPosts.data().posts
-      blogPostsRef.set({posts: [...posts, payload]})
+      return blogPostsRef.set({posts: [...posts, payload]})
     }
   },
   mutations: {

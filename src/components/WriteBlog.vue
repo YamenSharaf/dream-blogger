@@ -1,6 +1,6 @@
 <template>
 
-<div class="page-wrapper">
+<div v-loading="loading" class="page-wrapper">
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-8 d-flex flex-center">
@@ -38,6 +38,7 @@
 export default {
   data () {
     return {
+      loading: false,
       blogForm: {
         title: ``,
         body: ``,
@@ -53,7 +54,18 @@ export default {
   },
   methods: {
     handlePostBlog () {
+      this.loading = true
       this.$store.dispatch('postNewBlog', this.blogForm)
+      .then(() => {
+        this.loading = false
+        this.$message.success(`Posted successfully`)
+        Object.assign(this.$data, this.$options.data.apply(this))
+        this.$router.push({ name: 'Home' })
+      })
+      .catch((error) => {
+        this.loading = false
+        this.$message.error(error)
+      })
     }
   },
   mounted () {
