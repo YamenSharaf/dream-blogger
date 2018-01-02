@@ -7,6 +7,7 @@ import store from './store'
 import ElementUI from 'element-ui'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
+import wysiwyg from 'vue-wysiwyg'
 import '@/sass/app.scss'
 import '../node_modules/vue2-animate/dist/vue2-animate.min.css'
 import locale from 'element-ui/lib/locale/lang/en'
@@ -24,6 +25,7 @@ Vue.filter('formatDate', (date) => {
 Vue.use(ElementUI, {locale})
 Vue.use(BootstrapVue)
 Vue.use(VueMomentJS, moment)
+Vue.use(wysiwyg, {})
 
 /* eslint-disable no-new */
 new Vue({

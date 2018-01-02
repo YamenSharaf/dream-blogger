@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Profile from '@/components/Profile'
+import WriteBlog from '@/components/WriteBlog'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/new-blog',
+      name: 'WriteBlog',
+      component: WriteBlog
     }
   ]
 })

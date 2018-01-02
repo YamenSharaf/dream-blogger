@@ -5,6 +5,7 @@ import auth from '../db/auth'
 
 Vue.use(Vuex)
 // const nameDocRef = db.collection('nameData').doc('names')
+const blogPostsRef = db.collection('blogPosts').doc('posts')
 
 const store = new Vuex.Store({
   state: {
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
   getters: {
     getUserStatus (state) {
       return state.userStatus
+    },
+    getUserUid (state) {
+      return state.userStatus.uid
     },
     getName (state) {
       return state.name
@@ -67,6 +71,11 @@ const store = new Vuex.Store({
           commit('setUserStatus', { loggedIn: false, uid: '', email: '' })
         }
       })
+    },
+    async postNewBlog ({commit}, payload) {
+      const currentPosts = await blogPostsRef.get()
+      let posts = currentPosts.data().posts
+      blogPostsRef.set({posts: [...posts, payload]})
     }
   },
   mutations: {

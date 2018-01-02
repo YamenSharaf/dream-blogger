@@ -1,14 +1,21 @@
 <template>
-  <div class="page-wrapper">
-    <div v-loading="loading" class="container page-wrapper d-flex flex-center">
-      <div class="row">
+  <div class="page--home">
+    <div v-loading="loading" class="container">
+      <div class="row mt-5">
         <div class="col-12">
-          <h1>
-            Welcome to name saver
+          <h1 class="text-center">
+            Welcome to Dream blogger
           </h1>
         </div>
-        <div class="col-12">
-          <name-saver v-if="user.loggedIn"/>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-8">
+          
+        </div>
+        <div class="col-md-4 d-flex justify-content-end">
+          <el-button @click="$router.push({ name: 'WriteBlog' })">
+            Write new blog
+          </el-button>          
         </div>
       </div>
     </div>
